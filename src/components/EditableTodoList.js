@@ -11,13 +11,18 @@ class EditableTodoList extends Component {
         items: [
             {
                 id:1,
-                name:'react',
+                name:'To do Item 1',
                 isDone: false,
             },
             {
                 id:2,
-                name:'Einstein',
-                isDone: true,
+                name:'To do Item 2',
+                isDone: false,
+            },
+            {
+                id:3,
+                name:'To do Item 3',
+                isDone: false,
             }
         ]
     };
@@ -47,7 +52,7 @@ class EditableTodoList extends Component {
 
     addItem = (item) => {
         let newitem = {
-            id: Math.floor(Math.random() * 10),
+            id: Math.floor(Math.random() * 1000),
             name: item.name,
             isDone: false,
         }
@@ -62,18 +67,33 @@ class EditableTodoList extends Component {
         this.addItem(attrs);
     };
 
+    handleDragEnd = (result) => {
+
+        if (!result.destination) {
+            return
+        }
+
+        const newitems = Array.from(this.state.items);
+        const [reorderedItem] = newitems.splice(result.source.index, 1)
+        newitems.splice(result.destination.index, 0, reorderedItem)
+        this.setState({
+            items:newitems
+        })
+    }
+
     render() {
         
         return (
-            <div className="ui center aligned container">
+            <div className="ui center aligned small segment lifted">
                 <h1>Things to do</h1>
-                <DragDropContext onDragEnd= {() => {}}>
-                <TodoList 
-                    items={this.state.items}
-                    onDone={this.handleonDone}
-                    onDelete={this.handleDelete}
-                />
+                <DragDropContext onDragEnd={this.handleDragEnd}>
+                    <TodoList 
+                        items={this.state.items}
+                        onDone={this.handleonDone}
+                        onDelete={this.handleDelete}
+                    />
                 </DragDropContext>
+
                 <AddForm 
                     onFormSubmit={this.handleFormSubmit}
                 />
