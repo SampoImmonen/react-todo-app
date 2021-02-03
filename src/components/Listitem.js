@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Draggable } from 'react-beautiful-dnd';
+
 
 class Listitem extends Component {
 
@@ -24,8 +24,7 @@ class Listitem extends Component {
                     <i className="delete icon" onClick={this.handleDelete}></i>
                 </div>
             );
-        }
-        else{
+        } else {
             return(
                 <div className="ui text segment">
                     {this.props.name}
