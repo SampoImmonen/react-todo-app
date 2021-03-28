@@ -1,10 +1,10 @@
-# App to train making react Apps
+# To Do App to learn React
 
-# things to do
-1. List of todo items
-2. Add new items
-3. delete items
-4. mark items as done
-5. drag and drop to order items
-6. styling 
-7. delete all items that have been done
+## Features:
+1. create, todo items
+2. mark todo items as done
+3. delete todo items
+4. automatic sorting when item marked as done
+5. drag and drop sorting for todo items
+
+![image](./images/example.png)
