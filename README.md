@@ -7,4 +7,4 @@
 4. automatic sorting when item marked as done
 5. drag and drop sorting for todo items
 
-![image](./images/example.png)
+![image](images/example.png)
